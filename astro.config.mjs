@@ -1,8 +1,25 @@
-import { defineConfig } from 'astro/config';
-
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import vue from "@astrojs/vue";
+import { remarkReadingTime } from "./src/plugins/reading-time.mjs";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()]
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+  },
+  integrations: [
+    tailwind(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: () => true,
+        },
+      },
+    }),
+    mdx({
+      remarkPlugins: [remarkReadingTime],
+    }),
+  ],
 });

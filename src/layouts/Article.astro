@@ -1,0 +1,66 @@
+---
+import Navbar from "@components/Navbar.vue";
+import Footer from "@components/Footer.vue"
+
+export interface Props {
+	title: string;
+	frontmatter: {
+		title: string,
+    date: string,
+    author: string,
+		github: string,
+    description: string,
+		thumbnail: string
+		tags: string
+	}
+}
+
+const { title, frontmatter } = Astro.props as Props;
+const tags = frontmatter.tags.split(",")
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title ?? frontmatter.title} - FOSBlog</title>
+
+		<link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+	</head>
+	<body class="bg-neutral-100">
+		<Navbar client:load />
+
+		<img src={frontmatter.thumbnail} alt={frontmatter.title} class="w-full h-60">
+
+		<div class="p-3">
+			<div class="flex mb-5">
+				<img src={`https://github.com/${frontmatter.github}.png?size=400`} class="w-11 h-11 rounded-full" />
+	
+				<div class="flex flex-col ml-3">
+					<a href={`https://github.com/${frontmatter.github}`} target="_blank" class="text-base text-gray-900 font-roboto font-bold">{frontmatter.author}</a>
+					<span class="text-xs text-gray-400 font-roboto">Posted on {frontmatter.date}</span>
+				</div>
+			</div>
+
+			<h1 class="text-3xl text-gray-900 font-roboto font-bold">{frontmatter.title}</h1>
+
+			<div class="flex my-3">
+				{tags.map((tag) => (
+					<a class="text-sm text-gray-700 font-roboto font-medium py-1 px-2 border rounded-md border-transparent hover:border-blue-600 hover:bg-blue-100 hover:text-blue-600 cursor-pointer">#{tag}</a>
+				))}
+			</div>
+
+			<div class="text-base text-gray-900 font-roboto">
+				<slot />
+			</div>
+		</div>
+
+		<Footer />
+	</body>
+</html>
