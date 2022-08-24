@@ -31,10 +31,9 @@ const tags = frontmatter.tags.split(",")
 		<meta name="generator" content={Astro.generator} />
 		<title>{title ?? frontmatter.title} - FOSBlog</title>
 
-		<link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	</head>
 	<body class="bg-neutral-100">
 		<Navbar client:load />
