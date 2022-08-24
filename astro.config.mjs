@@ -8,7 +8,9 @@ import netlify from "@astrojs/netlify/edge-functions";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: netlify(),
+  adapter: netlify({
+    dist: new URL("./dist/", import.meta.url),
+  }),
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
