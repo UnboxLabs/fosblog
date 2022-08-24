@@ -1,0 +1,21 @@
+{
+  "functions": [
+    {
+      "function": "entry",
+      "path": "/"
+    },
+    {
+      "function": "entry",
+      "path": "/articles/releasing-osmicsx-v1"
+    },
+    {
+      "function": "entry",
+      "path": "/articles/what-is-fosblog"
+    },
+    {
+      "function": "entry",
+      "path": "/projects/osmicsx"
+    }
+  ],
+  "version": 1
+}
