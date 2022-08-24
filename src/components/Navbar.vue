@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="absolute w-full h-full" :class="{ hidden: !open }">
+    <div
+      class="fixed w-full h-full overflow-y-auto z-20"
+      :class="{ hidden: !open }"
+    >
       <div
         class="bg-black bg-opacity-25 w-full h-full absolute"
         @click="toggle"
@@ -366,45 +369,48 @@
       </div>
     </div>
 
-    <div class="flex items-center justify-between bg-white pl-3 pr-4 py-3">
-      <div class="flex items-center">
-        <button class="text-gray-900 mr-2" @click="toggle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </button>
+    <div class="flex bg-white pl-3 pr-4 py-2">
+      <div
+        class="flex flex-1 items-center justify-between lg:container lg:mx-auto lg:pl-3 lg:pr-1"
+      >
+        <div class="flex items-center">
+          <button class="text-gray-900 mr-2 md:hidden" @click="toggle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
 
-        <div class="bg-gray-900 rounded px-2 py-1">
-          <a href="/" class="font-roboto font-semibold text-white">FOSBlog</a>
+          <div class="bg-gray-900 rounded px-2 py-1">
+            <a href="/" class="font-roboto font-semibold text-white">FOSBlog</a>
+          </div>
         </div>
-      </div>
 
-      <button class="py-1 px-2 bg-blue-600 rounded-md hover:bg-blue-700">
-        <span class="text-base font-roboto font-medium text-white"
-          >Create Post</span
-        >
-      </button>
+        <button class="py-2 px-3 bg-blue-600 rounded-md hover:bg-blue-700">
+          <span class="text-base font-roboto font-medium text-white"
+            >Create Post</span
+          >
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from "vue";
+
 export default defineComponent({
   setup() {
     const open = ref(false);
-
     const toggle = () => (open.value = !open.value);
-
     return {
       open,
       toggle,

@@ -9,7 +9,7 @@
       v-if="showThumbnail"
     />
 
-    <div class="w-full bg-white rounded-b-md">
+    <div class="w-full bg-white rounded-b-md rounded-t-md">
       <div class="p-4 pb-0">
         <div class="flex mb-5">
           <img
@@ -61,8 +61,6 @@ const props = defineProps<{
   frontmatter: Frontmatter;
   showThumbnail: boolean;
 }>();
-
-console.log("mmk =>", props);
 
 const tags = computed(() => props.frontmatter.tags.split(","));
 </script>
