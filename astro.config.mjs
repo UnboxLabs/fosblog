@@ -3,9 +3,12 @@ import tailwind from "@astrojs/tailwind";
 import vue from "@astrojs/vue";
 import { remarkReadingTime } from "./src/plugins/reading-time.mjs";
 import mdx from "@astrojs/mdx";
+import netlify from "@astrojs/netlify/edge-functions";
 
 // https://astro.build/config
 export default defineConfig({
+  output: "server",
+  adapter: netlify(),
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },

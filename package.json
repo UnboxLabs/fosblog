@@ -17,6 +17,7 @@
     "vue": "^3.2.30"
   },
   "dependencies": {
+    "@astrojs/netlify": "^1.0.1",
     "@headlessui/vue": "^1.6.7",
     "@heroicons/vue": "^1.0.6",
     "mdast-util-to-string": "^3.1.0",
