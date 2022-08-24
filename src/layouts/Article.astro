@@ -1,6 +1,7 @@
 ---
 import Navbar from "@components/Navbar.vue";
 import Footer from "@components/Footer.vue"
+import type { Frontmatter } from "@components/mdx.types";
 
 export interface Props {
 	title: string;
@@ -14,6 +15,8 @@ export interface Props {
 		tags: string
 	}
 }
+
+const projects = await Astro.glob<Frontmatter>('../pages/projects/*.mdx');
 
 const { title, frontmatter } = Astro.props as Props;
 const tags = frontmatter.tags.split(",")
@@ -36,28 +39,54 @@ const tags = frontmatter.tags.split(",")
 	<body class="bg-neutral-100">
 		<Navbar client:load />
 
-		<img src={frontmatter.thumbnail} alt={frontmatter.title} class="w-full h-60">
-
-		<div class="p-3">
-			<div class="flex mb-5">
-				<img src={`https://github.com/${frontmatter.github}.png?size=400`} class="w-11 h-11 rounded-full" />
+		<div class="grid grid-cols-1 md:grid-cols-12 md:container md:mx-auto md:gap-2 lg:gap-3">
+			<div class="col-span-6 md:col-span-10 md:col-start-2 lg:col-span-8 md:bg-white md:my-2 lg:my-3 md:rounded-md md:border md:border-gray-900 md:border-opacity-10">
+				<img src={frontmatter.thumbnail} alt={frontmatter.title} class="w-full h-60 md:h-80 md:rounded-t-md">
 	
-				<div class="flex flex-col ml-3">
-					<a href={`https://github.com/${frontmatter.github}`} target="_blank" class="text-base text-gray-900 font-roboto font-bold">{frontmatter.author}</a>
-					<span class="text-xs text-gray-400 font-roboto">Posted on {frontmatter.date}</span>
+				<div class="p-3">
+					<div class="flex mb-5">
+						<img src={`https://github.com/${frontmatter.github}.png?size=400`} class="w-11 h-11 rounded-full" />
+			
+						<div class="flex flex-col ml-3">
+							<a href={`https://github.com/${frontmatter.github}`} target="_blank" class="text-base text-gray-900 font-roboto font-bold">{frontmatter.author}</a>
+							<span class="text-xs text-gray-400 font-roboto">Posted on {frontmatter.date}</span>
+						</div>
+					</div>
+	
+					<h1 class="text-3xl text-gray-900 font-roboto font-bold">{frontmatter.title}</h1>
+	
+					<div class="flex my-3">
+						{tags.map((tag) => (
+							<a class="text-sm text-gray-700 font-roboto font-medium py-1 px-2 border rounded-md border-transparent hover:border-blue-600 hover:bg-blue-100 hover:text-blue-600 cursor-pointer">#{tag}</a>
+						))}
+					</div>
+	
+					<div class="text-base text-gray-900 font-roboto">
+						<slot />
+					</div>
 				</div>
 			</div>
 
-			<h1 class="text-3xl text-gray-900 font-roboto font-bold">{frontmatter.title}</h1>
+			<div class="hidden lg:flex lg:flex-col lg:col-span-4 lg:py-3">
+				<!-- SHOWCASE -->
+				<div class="rounded-md bg-gray-50 border border-gray-900 border-opacity-10 p-3 px-0">
+					<div class="flex items-center justify-between mb-2 px-3">
+						<h3 class="text-lg font-roboto font-bold text-gray-700">Showcase</h3>
 
-			<div class="flex my-3">
-				{tags.map((tag) => (
-					<a class="text-sm text-gray-700 font-roboto font-medium py-1 px-2 border rounded-md border-transparent hover:border-blue-600 hover:bg-blue-100 hover:text-blue-600 cursor-pointer">#{tag}</a>
-				))}
-			</div>
+						<a href="#" class="text-xs text-blue-600 font-roboto font-medium">See all</a>
+					</div>
 
-			<div class="text-base text-gray-900 font-roboto">
-				<slot />
+					{projects.map((project, projectIdx) => (
+						<a href={project.url} class="flex flex-col border-y border-gray-200 hover:bg-white p-3">
+							<span class="text-base text-gray-900 font-roboto font-medium">{project.frontmatter.title}</span>
+							<span class="text-xs text-gray-400 font-robot">by {project.frontmatter.author}</span>
+						</a>
+					))}
+
+					<div class="px-3 pt-3">
+						<a href="#" class="block bg-blue-600 rounded-md text-center text-white font-roboto text-sm py-2">Submit Your Showcase!</a>
+					</div>
+				</div>
 			</div>
 		</div>
 
