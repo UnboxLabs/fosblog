@@ -315,7 +315,11 @@
             </svg>
           </a>
 
-          <a href="#" class="group p-2 rounded-md hover:bg-blue-100">
+          <a
+            href="https://github.com/UnboxLabs/fosblog"
+            target="_blank"
+            class="group p-2 rounded-md hover:bg-blue-100"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
