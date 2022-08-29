@@ -398,11 +398,14 @@
           </div>
         </div>
 
-        <button class="py-2 px-3 bg-blue-600 rounded-md hover:bg-blue-700">
+        <a
+          href="/create-post"
+          class="py-2 px-3 bg-blue-600 rounded-md hover:bg-blue-700"
+        >
           <span class="text-base font-roboto font-medium text-white"
             >Create Post</span
           >
-        </button>
+        </a>
       </div>
     </div>
   </div>

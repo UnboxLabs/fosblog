@@ -1,0 +1,79 @@
+---
+layout: "@layouts/Static.astro"
+title: "How to Create a Post"
+date: "Aug 23, 2022"
+---
+
+## Prerequisites
+
+- You have a **GitHub** account
+- **Git** installed on your local machine
+- **Node.js** - `14.18.0`, `v16.12.0`, or higher.
+- **Text editor** - We recommend [VS Code](https://code.visualstudio.com/) with the [Official Astro extension](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode).
+- **Terminal** - Astro is accessed through its command-line interface (CLI).
+
+## Clone Repo
+
+- Fork repo from [FOSBlog Repo](https://github.com/UnboxLabs/fosblog)
+- Open Terminal
+- Run `git clone <your-forked-repo>`
+- Install dependencies with `yarn install`
+- Start running `yarn dev`
+
+## Writing Post
+
+### Thumbnail
+
+It would be better if your post has a thumbnail. We would like to recommend you using [Cloudinary](https://cloudinary.com/) for serving image with fast CDN.
+
+### Title & Filename
+
+You can use any format for the title, but for filename you must follow rules:
+
+- lowercase
+- kebab case
+- no special character
+
+you can use this script if you need help generating filename based on your post title
+
+```javascript
+function generateFilename(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-zA-Z ]/g, "")
+    .replace(/\s/g, "-");
+}
+
+generateFilename("<your-title-here>");
+```
+
+### Author & GitHub
+
+Author will be displayed as your name in the post, and you need pass your GitHub username. We will automatically generate link to your GitHub profile.
+
+### Date
+
+Please ensure that you pass the date same as date when you create Pull Request with format `MMM DD, YYYY`
+
+### Tags
+
+You only allowed to put 4 tags and separated by `comma (,)`
+
+### Example
+
+```mdx
+---
+layout: "@layouts/Article.astro"
+title: "What is FOSBlog ?"
+thumbnail: "https://res.cloudinary.com/practicaldev/image/fetch/s--LkjaosP3--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gr81jbcgdqaok7143ny3.jpg"
+author: "Rully Ardiansyah"
+github: "devoresyah"
+date: "Aug 23, 2022"
+tags: "javascript,framework,blog,cms"
+---
+```
+
+## Publishing your Post
+
+- Push your commit into your forked repo
+- Open new [Pull Request](https://github.com/UnboxLabs/fosblog) on **FOSBlog Repo**

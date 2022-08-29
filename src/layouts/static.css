@@ -1,0 +1,44 @@
+#static-page p {
+  @apply mb-2;
+}
+#static-page h2 {
+  @apply text-2xl text-gray-900 font-roboto font-bold my-2;
+}
+#static-page h3 {
+  @apply text-xl text-gray-900 font-roboto font-semibold mb-px;
+}
+#static-page a:link,
+#static-page a:active,
+#static-page a:visited,
+#static-page a:focus {
+  @apply text-blue-500 underline;
+}
+#static-page a:hover {
+  @apply text-blue-600;
+}
+#static-page strong {
+  @apply font-bold;
+}
+#static-page ul,
+#static-page ol {
+  @apply pl-4;
+}
+#static-page ul > li {
+  @apply list-disc;
+}
+#static-page ol > li {
+  @apply list-decimal;
+}
+#static-page ul > li:last-child,
+#static-page ol > li:last-child {
+  @apply mb-3;
+}
+#static-page code {
+  @apply bg-black bg-opacity-10 text-gray-900 rounded max-w-full rounded p-1 text-[80%] ml-1 mr-px;
+}
+#static-page pre > code {
+  @apply ml-0 pl-0;
+}
+#static-page pre {
+  @apply rounded-md p-4 mb-3;
+}

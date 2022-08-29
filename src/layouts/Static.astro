@@ -1,0 +1,44 @@
+---
+import Navbar from "@components/Navbar.vue";
+import Footer from "@components/Footer.vue";
+import "./static.css"
+
+import type { Frontmatter } from '@components/mdx.types';
+
+export interface Props {
+	title: string;
+  frontmatter: Frontmatter 
+}
+
+const { title, frontmatter } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title ?? frontmatter.title} - FOSBlog</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-neutral-100">
+		<Navbar client:load />
+
+		<div class="grid grid-cols-12 md:container md:mx-auto md:gap-3">
+			<div class="col-span-12 md:col-span-10 md:col-start-2 bg-white my-5 rounded-md border border-gray-900 border-opacity-10 p-7">
+				<h1 class="text-3xl text-gray-900 font-roboto font-bold mb-3">{frontmatter.title}</h1>
+	
+					<div id="static-page" class="text-base text-gray-900 font-roboto font-reguler">
+						<slot />
+					</div>
+			</div>
+		</div>
+
+		<Footer />
+	</body>
+</html>
