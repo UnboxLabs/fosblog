@@ -5,7 +5,7 @@
   >
     <img
       :src="frontmatter.thumbnail"
-      class="flex w-full h-60 rounded-t-md"
+      class="flex w-full h-60 rounded-t-md object-cover"
       v-if="showThumbnail"
     />
 

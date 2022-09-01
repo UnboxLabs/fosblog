@@ -1,0 +1,44 @@
+#article p {
+  @apply mb-2;
+}
+#article h2 {
+  @apply text-2xl text-gray-900 font-roboto font-bold my-2;
+}
+#article h3 {
+  @apply text-xl text-gray-900 font-roboto font-semibold mb-px;
+}
+#article a:link,
+#article a:active,
+#article a:visited,
+#article a:focus {
+  @apply text-blue-500 underline;
+}
+#article a:hover {
+  @apply text-blue-600;
+}
+#article strong {
+  @apply font-bold;
+}
+#article ul,
+#article ol {
+  @apply pl-4;
+}
+#article ul > li {
+  @apply list-disc;
+}
+#article ol > li {
+  @apply list-decimal;
+}
+#article ul > li:last-child,
+#article ol > li:last-child {
+  @apply mb-3;
+}
+#article code {
+  @apply bg-black bg-opacity-10 text-gray-900 rounded max-w-full rounded p-1 text-[80%] ml-1 mr-px;
+}
+#article pre > code {
+  @apply ml-0 pl-0;
+}
+#article pre {
+  @apply rounded-md p-4 mb-3;
+}

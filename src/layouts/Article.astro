@@ -1,6 +1,7 @@
 ---
 import Navbar from "@components/Navbar.vue";
 import Footer from "@components/Footer.vue"
+import "./article.css"
 import type { Frontmatter } from "@components/mdx.types";
 
 export interface Props {
@@ -40,7 +41,7 @@ const tags = frontmatter.tags.split(",")
 
 		<div class="grid grid-cols-1 md:grid-cols-12 md:container md:mx-auto md:gap-2 lg:gap-3">
 			<div class="col-span-6 md:col-span-10 md:col-start-2 lg:col-span-8 md:bg-white md:my-2 lg:my-3 md:rounded-md md:border md:border-gray-900 md:border-opacity-10">
-				<img src={frontmatter.thumbnail} alt={frontmatter.title} class="w-full h-60 md:h-80 md:rounded-t-md">
+				<img src={frontmatter.thumbnail} alt={frontmatter.title} class="w-full h-60 md:h-80 object-cover md:rounded-t-md">
 	
 				<div class="p-3">
 					<div class="flex mb-5">
@@ -60,7 +61,7 @@ const tags = frontmatter.tags.split(",")
 						))}
 					</div>
 	
-					<div class="text-base text-gray-900 font-roboto">
+					<div id="article" class="text-base text-gray-900 font-roboto">
 						<slot />
 					</div>
 				</div>
