@@ -1,0 +1,27 @@
+---
+layout: "@layouts/Article.astro"
+title: "Membersihan Branch Git yang Sudah Tidak Terpakai"
+thumbnail: "https://res.cloudinary.com/dk3u3yvye/image/upload/v1663879540/clean_git_branch.webp"
+author: "Natia Grashella"
+github: "natiagrshl"
+date: "Sep 23, 2022"
+tags: "git,branch"
+---
+
+Sering banget kita lupa buat bersihin branch-branch lokal yang ada di pc kita. Kalo diliat lumayan _messy_. Dan yang paling bikin jelek itu kalo ada branch yang udah ke-merge dan masih ada di lokal kita, terus ita mau pake branch dengan nama yang sama. Semua commit yang ada di branch itu bakal ikut lagi.
+
+Nah, sebagai developer yang baik dan budiman. Kita harus tetep ngejaga git versioning kita tetep rapih.
+
+Buat file baru `.clear_branch.sh` yang nantinya bakal dijalanin via terminal:
+
+```bash
+#!/bin/bash
+
+function cb() {
+  git fetch -p ; git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D
+}
+```
+
+nextnya, kalian bisa bikin alias command buat jalanin script itu kalau ga mau repot-repot manggil file dan function nya terus-terusan
+
+selamat mencoba ;)
