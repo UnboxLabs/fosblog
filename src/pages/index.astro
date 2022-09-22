@@ -8,6 +8,6 @@ const articles = await Astro.glob<Frontmatter>('./articles/*.mdx');
 
 <Layout title="FOSBlog - Free open-source blog">
 	<main class="pb-5">
-		{articles.map((article, articleIdx) => <ArticleCard url={article.url} frontmatter={article.frontmatter} showThumbnail={articleIdx === 0} client:only="vue" />)}
+		{articles.reverse().map((article, articleIdx) => <ArticleCard url={article.url} frontmatter={article.frontmatter} showThumbnail={articleIdx === 0} client:only="vue" />)}
 	</main>
 </Layout>
